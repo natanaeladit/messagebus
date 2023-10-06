@@ -8,7 +8,7 @@ namespace Consumer
         Task IConsumer<ValueEntered>.Consume(ConsumeContext<ValueEntered> context)
         {
             Console.WriteLine(context.Message.Value);
-            return Task.CompletedTask;
+            throw new Exception(context.Message.Value);
         }
     }
 }

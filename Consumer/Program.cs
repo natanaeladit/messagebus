@@ -17,11 +17,6 @@ namespace Consumer
                         {
                             cfg.ReceiveEndpoint("print-listener", e =>
                             {
-                                e.UseMessageRetry(r =>
-                                {
-                                    r.Immediate(5);
-                                });
-
                                 e.ConfigureConsumer<PrintConsumer>(context, c => c.UseMessageRetry(r =>
                                 {
                                     r.Interval(10, TimeSpan.FromMilliseconds(200));
