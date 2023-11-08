@@ -19,6 +19,7 @@ namespace Consumer
                             {
                                 e.ConfigureConsumer<PrintConsumer>(context, c => c.UseMessageRetry(r =>
                                 {
+                                    c.UseConcurrencyLimit(1); // Consume 1 message at a time
                                     r.Interval(10, TimeSpan.FromMilliseconds(200));
                                     r.Ignore<ArgumentNullException>();
                                 }));
